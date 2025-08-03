@@ -1,0 +1,63 @@
+html{
+    scroll-behavior: smooth;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(19, 139, 139);
+    color: white;
+}
+h1{
+    color: white;
+    text-align: center;
+    padding: 20px;
+    
+}
+.menu{
+    list-style: none;
+    background-color: rgb(8, 156, 156);
+    padding: 5px;
+    margin: 20px;
+    margin-right: 90%;
+    border: solid white 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.menu li:hover ul{
+    color: white;
+    display: block;
+}
+.menu ul{
+    display: none;
+    list-style: none;
+    background-color:rgb(8, 156, 156);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.parte1{
+    color: white;
+    list-style: none;
+    padding: 10px;
+    font-size: 20px;
+}
+h2{
+    padding: 20px;
+    background-color: rgb(8, 156, 156);
+}
+hr{
+    height: 2px;
+    color: white;
+}
+.parrafo{
+    margin: 100px 100px 100px 100px;
+    font-size: 20px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+.inicio{
+    background-color:rgb(8, 156, 156) ;
+    background-size: cover;
+}
