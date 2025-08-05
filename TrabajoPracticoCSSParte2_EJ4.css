@@ -1,0 +1,35 @@
+#cabecera{
+    padding: 1em;
+}
+#menu{
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+#pie{
+    padding-top: 0.5em;
+    padding-bottom: o.5em;
+    margin-top: 1em;
+}
+#imagen{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+#noticia,
+#secundario,
+#principal{
+    padding: 0.5em;
+
+}
+#publicidad{
+    margin-top: 0.5em;
+    padding: 0.5em;
+
+}
+#articulo{
+      margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
