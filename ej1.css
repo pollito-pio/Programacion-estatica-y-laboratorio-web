@@ -1,0 +1,40 @@
+.v {
+    font-family: sans-serif;
+    color: red;
+    font-size: 20px;
+    border: 5px solid #784;
+    background-color: thistle;
+}
+#uno {
+    position: relative;
+    width: 98%;
+    height: 100px;
+    margin-bottom: 30px;
+}
+#dos {
+    position: absolute;
+    display: block;
+    width: 20%;
+    height: 70%;
+    right: 0;
+    background-color: gray;
+}
+#tres {
+    left: 0;
+    position: absolute;
+    height: 300px;
+    height: 70%;
+    width: 20%;
+    background-color: gray;
+
+}
+#cuatro {
+    left: 275px;
+    right: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: absolute;
+    width: 52%;
+    height: 70%;
+    background-color: gray;
+}
