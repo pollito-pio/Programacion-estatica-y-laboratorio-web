@@ -1,0 +1,2 @@
+ document.write("Datos personales<br>Nombre: Juan<br>Apellido: Avilez<br>Estado civil: Soltero<br>Edad: 17<br>Fecha de nacimiento: 08/09/2007<br>DNI: 48268273<br>");
+document.write("Dependiendo del tiempo de ejecucion que quiera utilizaria una de las tres opciones");

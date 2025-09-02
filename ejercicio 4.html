@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var nombre = prompt("Ingrese su nombre:");
+    var apellido = prompt("Ingrese su apellido:");
+    var estadoCivil = prompt("Ingrese su estado civil:");
+    var edad = prompt("Ingrese su edad:");
+    var fechaNacimiento = prompt("Ingrese su fecha de nacimiento (dd/mm/aaaa):");
+    var dni = prompt("Ingrese su DNI:");
+
+    var confirmar = confirm("¿Desea imprimir sus datos?");
+    if (confirmar) {
+        document.write('<h1>Datos Personales</h1>');
+        document.write('<p><strong>Nombre:</strong> ' + nombre + '</p>');
+        document.write('<p><strong>Apellido:</strong> ' + apellido + '</p>');
+        document.write('<p><strong>Estado civil:</strong> ' + estadoCivil + '</p>');
+        document.write('<p><strong>Edad:</strong> ' + edad + '</p>');
+        document.write('<p><strong>Fecha de nacimiento:</strong> ' + fechaNacimiento + '</p>');
+        document.write('<p><strong>DNI:</strong> ' + dni + '</p>');
+        alert("Sus datos han sido impresos");
+    } else {
+        document.write('<h2>Impresión de datos cancelada por el usuario.</h2>');
+    }
+    </script>
+</body>
+</html>
