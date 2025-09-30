@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 9 - Strings (sin CSS)</title>
+</head>
+<body>
+<h1>Ejercicio 9: String</h1>
+<p>Desarrollar una página que pida al usuario que ingrese un mensaje y se muestre en pantalla:</p>
+<ul>
+<li>En <strong>mayúscula</strong>.</li>
+<li>En <strong>minúscula</strong>.</li>
+<li>El <strong>sub‑mensaje</strong> que comienza en la <em>posición 5</em> y de largo <em>10</em>.</li>
+<li>Si el mensaje <em>incluye</em> la palabra <strong>"hola"</strong>, escribir: <strong>"hola que tal"</strong>.</li>
+<li>El mismo mensaje pero <strong>sin espacios en blanco</strong> y con la palabra <strong>hola</strong> eliminada.</li>
+<li>El mensaje <strong>traducido</strong> (mi→my, hola→hello, nombre→name, …).</li>
+</ul>
+
+<form id="form">
+<input id="mensaje" type="text" placeholder="Escribe tu mensaje aquí…" autocomplete="off">
+<button type="submit">Procesar</button>
+</form>
+
+<section>
+<ul id="resultados">
+<li><small>Mayúscula:</small> <span id="r-mayus"></span></li>
+<li><small>Minúscula:</small> <span id="r-minus"></span></li>
+<li><small>Sub‑mensaje (pos 5, largo 10):</small> <span id="r-sub"></span></li>
+<li><small>Contiene "hola":</small> <span id="r-hola"></span></li>
+<li><small>Sin espacios y sin "hola":</small> <span id="r-sinespacios"></span></li>
+<li><small>Traducción (ES→EN):</small> <span id="r-trad"></span></li>
+</ul>
+</section>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const input = $("mensaje");
+
+  const replaceWholeWords = (text, dict) => {
+    const keys = Object.keys(dict)
+      .sort((a, b) => b.length - a.length)
+      .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    if (keys.length === 0) return text;
+    const re = new RegExp("\\b(" + keys.join("|") + ")\\b", "gi");
+    return text.replace(re, (match) => {
+      const lower = match.toLowerCase();
+      const replacement = dict[lower] ?? match;
+      if (match[0] === match[0].toUpperCase()) {
+        return replacement.charAt(0).toUpperCase() + replacement.slice(1);
+      }
+      return replacement;
+    });
+  };
+
+  const handle = (e) => {
+    e && e.preventDefault();
+    const msg = (input.value || "");
+
+    const mayus = msg.toUpperCase();
+    const minus = msg.toLowerCase();
+
+    const sub = msg.substring(4, 14);
+
+    const contieneHola = minus.includes("hola") ? "hola que tal" : "(no contiene \"hola\")";
+
+    const sinHola = msg.replace(/hola/gi, "");
+    const sinEspaciosYHola = sinHola.replace(/\s+/g, "");
+
+    const diccionario = {
+      "por favor": "please",
+      "muchas gracias": "thank you",
+      "gracias": "thanks",
+      "adios": "bye",
+      "hola": "hello",
+      "mi": "my",
+      "nombre": "name"
+    };
+    const traducido = replaceWholeWords(msg, diccionario);
+
+    $("r-mayus").textContent = mayus;
+    $("r-minus").textContent = minus;
+    $("r-sub").textContent = sub || "(vacío)";
+    $("r-hola").textContent = contieneHola;
+    $("r-sinespacios").textContent = sinEspaciosYHola;
+    $("r-trad").textContent = traducido;
+  };
+
+  document.getElementById("form").addEventListener("submit", handle);
+  handle();
+})();
+</script>
+</body>
+</html>

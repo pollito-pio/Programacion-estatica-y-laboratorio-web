@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 12 - CHAT (sin CSS)</title>
+</head>
+<body>
+<h1>CHAT</h1>
+
+<form id="chat-form">
+  <label for="nombre">Nombre</label>
+  <input id="nombre" name="nombre" type="text" placeholder="Nombre" autocomplete="off" required>
+
+  <label for="mensaje">Mensaje</label>
+  <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..."></textarea>
+
+  <div>
+    <button type="submit" id="btn-enviar">Enviar Mensaje</button>
+    <span>Sugerencia: Ctrl+Enter para enviar</span>
+  </div>
+</form>
+
+<hr>
+<div id="historial" aria-live="polite"></div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const form = $("chat-form");
+  const nombre = $("nombre");
+  const mensaje = $("mensaje");
+  const historial = $("historial");
+
+  const formatDate = (d) => {
+    const fecha = d.toLocaleDateString("es-AR");
+    const hora = d.toLocaleTimeString("es-AR", { hour12: false });
+    return `${fecha} ${hora}`;
+  };
+
+  const appendEntry = (autor, texto) => {
+    const time = formatDate(new Date());
+    const entry = document.createElement("div");
+    entry.innerHTML = `<div>${time} por <span></span></div>` +
+                      `<span></span>`;
+    entry.querySelector('span').textContent = autor || "Anónimo";
+    entry.querySelector('span:last-child').textContent = texto;
+    historial.appendChild(entry);
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const autor = (nombre.value || "").trim() || "Anónimo";
+    const texto = (mensaje.value || "").trim();
+    if (!texto) {
+      mensaje.focus();
+      return;
+    }
+    appendEntry(autor, texto);
+    mensaje.value = ""; // limpiar contenido anterior
+    mensaje.focus(); // posicionar el cursor en el textarea
+  });
+
+  mensaje.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  // Focus inicial en el textarea como en el ejemplo
+  mensaje.focus();
+})();
+</script>
+</body>
+</html>
